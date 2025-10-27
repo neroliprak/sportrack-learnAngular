@@ -1,0 +1,28 @@
+<app-navbar />
+<section>
+    <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+        <h1>Account Sign In</h1>
+        <input type="text" placeholder="Email" formControlName="email">
+        <div
+            *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+            <div *ngIf="loginForm.get('email')?.hasError('required')" class="error">Email is required</div>
+        </div>
+
+        <input [type]="hidePassword? 'password' : 'text'" placeholder="Password" formControlName="password">
+        <div class="image-icon" [ngClass]="hidePassword ? 'eye-off' : 'eye'" (click)="togglePasswordVisibility($event)">
+        </div>
+        <div
+            *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+            <div *ngIf="loginForm.get('password')?.hasError('required')" class="error error-password">Password is
+                required</div>
+        </div>
+        <!-- Class dynamique [ngClass] -->
+
+        <button class="submit" type="submit">Continue</button>
+        <hr>
+        <div class="details">
+            <a routerLink="/register">Create a New Account</a>
+            <a href="/">Lost Password ?</a>
+        </div>
+    </form>
+</section>

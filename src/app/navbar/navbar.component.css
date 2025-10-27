@@ -1,0 +1,80 @@
+nav a {
+  text-decoration: none;
+  color: var(--color-on-primary);
+  transition: 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--color-secondary);
+}
+
+.navbar-top {
+  display: flex;
+  position: fixed;
+  z-index: 999;
+  height: 60px;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0px 90px;
+  align-items: center;
+  border-bottom: #333333 solid 2px;
+  background-color: var(--dark);
+}
+
+.navbar-top::before,
+.navbar-top::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 2px;
+  height: 100vh;
+  background-color: #333333;
+  z-index: 9999;
+  margin: 0 30px;
+}
+
+.navbar-top::before {
+  left: 0;
+}
+
+.navbar-top::after {
+  right: 0;
+}
+
+.navbar-top ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.img-logo {
+  position: relative;
+  top: 8px;
+  width: 45px;
+  height: 45px;
+  background-image: url("./../../assets/perftrack-logo.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.navbar-bottom {
+  position: relative;
+  top: 90vh;
+  left: 0;
+  display: flex;
+  position: fixed;
+  z-index: 999;
+  height: 60px;
+  width: 100%;
+  justify-content: flex-end;
+  padding: 20px 90px;
+  align-items: center;
+}
+
+.navbar-bottom ul {
+  text-transform: uppercase;
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  gap: 5px;
+}

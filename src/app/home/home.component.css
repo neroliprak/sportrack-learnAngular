@@ -1,0 +1,88 @@
+/* Pour centrer un élément */
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Horizontalement */
+  align-items: left; /* Verticalement */
+  height: 100vh;
+  padding: 0 140px;
+  background-color: #1b1b1b;
+  background-image: url("./../../assets/illustration-sport.png");
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: 90% 70%;
+}
+
+.hero-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: fit-content;
+  position: relative;
+  top: 50px;
+}
+
+.hero-titles h1 {
+  font-family: var(--font-title);
+  color: var(--color-primary);
+  font-size: var(--font-size-h1);
+  margin: 0;
+  font-weight: 100;
+}
+
+.hero-titles p {
+  border-left: var(--color-primary) solid 1px;
+  padding-left: 10px;
+  position: relative;
+  bottom: 25px;
+  font-size: var(--font-size-md);
+  color: var(--color-secondary);
+}
+
+.hero-titles a {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  color: var(--color-on-primary);
+  text-decoration: none;
+}
+
+.icon-chevron {
+  width: 18px;
+  height: 18px;
+  background-image: url("./../../assets/icons/chevron-right.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left;
+  position: relative;
+  top: 2px;
+}
+
+.start-button {
+  position: relative;
+  bottom: 25px;
+  display: flex;
+  padding-bottom: 10px;
+  border-bottom: var(--white) solid 1px;
+  width: fit-content;
+}
+
+.hero-titles img {
+  width: 40px;
+  height: 40px;
+}
+
+.hero-img-background {
+  position: relative;
+  top: 240px;
+  right: 5vw;
+  display: flex;
+  height: 150px;
+  width: 650px;
+  background-image: url("./../../assets/perftrack-population.svg");
+  /* background-position: left center; */
+  background-repeat: no-repeat;
+  /* background-size: 100% 70%; */
+  background-size: contain; /* ou 100% auto si tu veux remplir horizontalement */
+  background-position: left;
+}

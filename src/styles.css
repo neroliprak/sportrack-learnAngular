@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Fonts */
+  --font-main: "Afacad", sans-serif;
+  --font-title: "Bayon", sans-serif;
+  /* Pallets */
+  --blue: #0bcaf4;
+  --white: #ffffff;
+  --gray: #888888;
+  --black: #202020;
+  --dark: #1b1b1b;
+  /* Colors */
+  --color-primary: var(--blue);
+  --color-background: var(--dark);
+  --color-on-primary: var(--white);
+  --color-secondary: var(--gray);
+  /* Statement */
+
+  /* Tailles de texte */
+  --font-size-h1: 3.125rem; /* ≈ 50px */
+  --font-size-h2: 3.75rem; /* 60px */
+  --font-size-lg: 1.25rem; /* 20px */
+  --font-size-md: 1.125rem; /* 18px */
+  --font-size-sm: 1rem; /* 16px */
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-on-primary);
+  background-color: var(--color-background);
+}
