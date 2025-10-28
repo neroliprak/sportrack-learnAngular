@@ -1,0 +1,10 @@
+<section>
+    <h1>Tous les exercises</h1>
+    @for (exercise of exercises ; track exercise.id) {
+    <div>
+        <h2>{{ exercise.name }}</h2>
+        <p>{{ exercise.description }}</p>
+        <a routerLink="/exercises/{{ exercise.id }}">Voir l'exercice</a>
+    </div>
+    }
+</section>

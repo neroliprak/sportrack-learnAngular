@@ -1,7 +1,9 @@
-import { Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { HomeComponent } from './home/home.component';
+import { Routes } from "@angular/router";
+import { LoginComponent } from "./auth/login/login.component";
+import { RegisterComponent } from "./auth/register/register.component";
+import { HomeComponent } from "./home/home.component";
+import { ExercisesComponent } from "./exercises/exercises.component";
+import { ExerciseDetailComponent } from "./exercise-detail/exercise-detail.component";
 
 export const routes: Routes = [
   //   {
@@ -10,18 +12,28 @@ export const routes: Routes = [
   //     pathMatch: 'full',
   //   },
   {
-    path: '',
+    path: "",
     component: HomeComponent,
-    title: 'Home',
+    title: "Home",
   },
   {
-    path: 'login',
+    path: "login",
     component: LoginComponent,
-    title: 'Login',
+    title: "Login",
   },
   {
-    path: 'register',
+    path: "register",
     component: RegisterComponent,
-    title: 'Register',
+    title: "Register",
+  },
+  {
+    path: "exercises",
+    component: ExercisesComponent,
+    title: "Exercises",
+  },
+  {
+    path: "exercise-details/:id",
+    component: ExerciseDetailComponent,
+    title: "Exercise",
   },
 ];
