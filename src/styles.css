@@ -19,7 +19,6 @@
   --color-background: var(--dark);
   --color-on-primary: var(--white);
   --color-secondary: var(--gray);
-  /* Statement */
 
   /* Tailles de texte */
   --font-size-h1: 3.125rem; /* ≈ 50px */
@@ -33,4 +32,17 @@ body {
   font-family: var(--font-main);
   color: var(--color-on-primary);
   background-color: var(--color-background);
+}
+
+.background-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/background-noise.svg");
+  background-repeat: repeat;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
 }

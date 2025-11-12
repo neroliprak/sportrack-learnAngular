@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { CursorComponent } from "./components/design/cursor/cursor.component";
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  selector: "app-root",
+  imports: [RouterOutlet, CommonModule, CursorComponent],
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.css",
 })
 export class AppComponent {
-  title = 'front-sportrack';
+  title = "front-sportrack";
 }

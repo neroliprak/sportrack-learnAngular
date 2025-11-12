@@ -6,6 +6,7 @@ import { ExercisesComponent } from "./exercises/exercises.component";
 import { ExerciseDetailComponent } from "./exercise-detail/exercise-detail.component";
 
 export const routes: Routes = [
+  // Redirection par défaut vers la page de login
   //   {
   //     path: '',
   //     redirectTo: 'login',
@@ -32,8 +33,8 @@ export const routes: Routes = [
     title: "Exercises",
   },
   {
-    path: "exercise-details/:id",
+    path: "exercises/:id",
     component: ExerciseDetailComponent,
-    title: "Exercise",
+    title: "Exercise Detail",
   },
 ];

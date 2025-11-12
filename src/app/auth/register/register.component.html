@@ -1,1 +1,61 @@
-<p>register works!</p>
+<app-navbar />
+<section>
+    <form [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
+        <h1>Account Sign in</h1>
+
+        <div class="group">
+            <input id="username" class="input" type="text" formControlName="username"
+                [ngClass]="{'filled' : registerForm.get('username')?.value,'error-input': registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched)}" />
+            <label for="username">Username<sup aria-hidden="true">*</sup></label>
+            @if(registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty ||
+            registerForm.get('username')?.touched)){
+            @if(registerForm.get('username')?.hasError('required')){
+            <div class="error">Username is required</div>}
+            }
+        </div>
+
+        <div class="group">
+            <input id="email" class="input" type="text" formControlName="email"
+                [ngClass]="{'filled' : registerForm.get('email')?.value,'error-input': registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)}" />
+            <label for="email">Email<sup aria-hidden="true">*</sup></label>
+
+            @if(registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty ||
+            registerForm.get('email')?.touched)){
+            @if(registerForm.get('email')?.hasError('required')){
+            <div class="error">Email is required</div>
+            }
+            @if(registerForm.get('email')?.hasError('email')){
+            <div class="error">Please enter a valid email address</div>
+            }
+            }
+        </div>
+        <div class="group">
+            <input [type]="hidePassword ? 'password' : 'text'" id="password" type="password" formControlName="password"
+                required class="input" [ngClass]="{
+                'filled': registerForm.get('password')?.value,
+                'error-input': registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)
+                }" />
+
+            <label for="password">Password<sup aria-hidden="true">*</sup></label>
+            <div class="image-icon" [ngClass]="hidePassword ? 'eye-off' : 'eye'"
+                (click)="togglePasswordVisibility($event)">
+            </div>
+            @if(registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty ||
+            registerForm.get('password')?.touched)){
+            @if(registerForm.get('password')?.hasError('required')){
+            <div class="error error-password">Password is required</div>
+            }
+            @if(registerForm.get('password')?.hasError('minlength')){
+            <div class="error error-password">Password must be at least 6 characters long</div>
+            }
+            }
+        </div>
+
+        <button class="submit" type="submit">Continue</button>
+        <hr>
+        <div class="details">
+            <a routerLink="/login">Log in</a>
+            <a href="/">Lost Password ?</a>
+        </div>
+    </form>
+</section>

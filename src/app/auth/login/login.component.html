@@ -1,27 +1,48 @@
 <app-navbar />
 <section>
-    <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
-        <h1>Account Sign In</h1>
-        <input type="text" placeholder="Email" formControlName="email">
-        <div
-            *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
-            <div *ngIf="loginForm.get('email')?.hasError('required')" class="error">Email is required</div>
+    <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+        <h1>Account Log In</h1>
+        <div class="group">
+            <!-- or [class.filled]="loginForm.get('email')?.value" -->
+            <input id="email" type="text" class="input" formControlName="email" required
+                [ngClass]="{'filled' : loginForm.get('email')?.value,'error-input': loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)}" />
+            <label for="email">Email<sup aria-hidden="true">*</sup></label>
+
+            @if(loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)){
+            @if(loginForm.get('email')?.hasError('required')){
+            <div class="error">Email is required</div>
+            }
+            @if(loginForm.get('email')?.hasError('email')){
+            <div class="error">Please enter a valid email address</div>
+            }
+            }
         </div>
 
-        <input [type]="hidePassword? 'password' : 'text'" placeholder="Password" formControlName="password">
-        <div class="image-icon" [ngClass]="hidePassword ? 'eye-off' : 'eye'" (click)="togglePasswordVisibility($event)">
-        </div>
-        <div
-            *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
-            <div *ngIf="loginForm.get('password')?.hasError('required')" class="error error-password">Password is
-                required</div>
-        </div>
-        <!-- Class dynamique [ngClass] -->
+        <div class="group">
+            <input [type]="hidePassword ? 'password' : 'text'" id="password" type="password" formControlName="password"
+                required class="input" [ngClass]="{
+                'filled': loginForm.get('password')?.value,
+                'error-input': loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)
+                }" />
 
+            <label for="password">Password<sup aria-hidden="true">*</sup></label>
+            <div class="image-icon" [ngClass]="hidePassword ? 'eye-off' : 'eye'"
+                (click)="togglePasswordVisibility($event)">
+            </div>
+            @if(loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty ||
+            loginForm.get('password')?.touched)){
+            @if(loginForm.get('password')?.hasError('required')){
+            <div class="error error-password">Password is required</div>
+            }
+            @if(loginForm.get('password')?.hasError('minlength')){
+            <div class="error error-password">Password must be at least 6 characters long</div>
+            }
+            }
+        </div>
         <button class="submit" type="submit">Continue</button>
         <hr>
         <div class="details">
-            <a routerLink="/register">Create a New Account</a>
+            <a routerLink="/register">Create an account</a>
             <a href="/">Lost Password ?</a>
         </div>
     </form>

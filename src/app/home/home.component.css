@@ -1,9 +1,8 @@
-/* Pour centrer un élément */
 header {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Horizontalement */
-  align-items: left; /* Verticalement */
+  justify-content: center;
+  align-items: left;
   height: 100vh;
   padding: 0 140px;
   background-color: #1b1b1b;
@@ -80,9 +79,7 @@ header {
   height: 150px;
   width: 650px;
   background-image: url("./../../assets/perftrack-population.svg");
-  /* background-position: left center; */
   background-repeat: no-repeat;
-  /* background-size: 100% 70%; */
-  background-size: contain; /* ou 100% auto si tu veux remplir horizontalement */
+  background-size: contain;
   background-position: left;
 }
