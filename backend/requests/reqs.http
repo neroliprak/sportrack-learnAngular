@@ -1,0 +1,22 @@
+GET http://localhost:5001/api/users
+
+###
+
+POST http://localhost:5001/api/users
+Content-type: application/json; charset=utf-8
+
+{
+    "firstname": "Toto",
+    "lastname":"Tata",
+    "email":"tata@toto.fr",
+    "password":"password123"
+}
+
+###
+
+PUT http://localhost:5001/api/users/1
+Content-type: application/json; charset=utf-8
+
+{
+    "firstname": "Madre"
+}

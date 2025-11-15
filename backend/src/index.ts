@@ -13,21 +13,7 @@ AppDataSource.initialize()
   // when connected successfully
   .then(async () => {
     console.log("Database connected!");
-
-    const userRepo = AppDataSource.getRepository(User);
-
-    // Create and save a new user
-    const newUser = userRepo.create({
-      firstname: "Alice",
-      lastname: "Doe",
-      email: "alice@example.com",
-      password: "1234",
-    });
-
-    // await userRepo.save(newUser);
-    console.log(newUser);
-
-    app.use("/users", router);
+    app.use("/api/users", router);
 
     app.listen(PORT, () =>
       console.log(`Server running on http://127.0.0.1:${PORT}`)
