@@ -8,9 +8,12 @@ export class UserController {
   async getAllUsers(req: Request, res: Response) {
     try {
       const users = await this.userService.getAllUsers();
-      res.status(200).json(users);
-    } catch (error) {
-      res.status(500).json({ message: "Internal Server Error" });
+      return res.status(200).json(users);
+    } catch (error: any) {
+      if (error.message === "No users found") {
+        res.status(404).json({ message: "No users found" });
+      }
+      return res.status(500).json({ message: "Internal Server Error" });
     }
   }
 
@@ -19,18 +22,11 @@ export class UserController {
     try {
       const user = await this.userService.getUserById(userId);
       return res.status(200).json(user);
-    } catch (error) {
-      res.status(500).json({ message: "Internal Server Error" });
-    }
-  }
-
-  async getUserByEmail(req: Request, res: Response) {
-    const email = req.params.email;
-    try {
-      const user = await this.userService.getUserByEmail(email);
-      return res.status(200).json(user);
-    } catch (error) {
-      res.status(500).json({ message: "Internal Server Error" });
+    } catch (error: any) {
+      if (error.message === "User not found") {
+        return res.status(404).json({ message: "User not found" });
+      }
+      return res.status(500).json({ message: "Internal Server Error" });
     }
   }
 
@@ -38,6 +34,9 @@ export class UserController {
     try {
       // https://typeorm.io/docs/getting-started/#save-a-one-to-one-relation
       const { firstname, lastname, email, password } = req.body;
+      if (!firstname || !lastname || !email || !password) {
+        return res.status(400).json({ message: "All fields are required" });
+      }
 
       // create a new user instance
       const newUser = new User();
@@ -46,14 +45,13 @@ export class UserController {
       newUser.email = email;
       newUser.password = password;
 
-      if (!firstname || !lastname || !email || !password) {
-        res.status(400).json({ message: "All fields are required" });
-      }
-
       const savedUser = await this.userService.createUser(newUser);
-      res.status(201).json(savedUser);
-    } catch (error) {
-      res.status(500).json({ message: "Internal Server Error" });
+      return res.status(201).json(savedUser);
+    } catch (error: any) {
+      if (error.message === "Email already exists") {
+        return res.status(409).json({ message: "Email already exists" });
+      }
+      return res.status(500).json({ message: "Internal Server Error" });
     }
   }
 
@@ -66,9 +64,28 @@ export class UserController {
         userId,
         dataUpdateUser
       );
-      res.status(200).json(updateUser);
-    } catch (error) {
-      res.status(500).json({ message: "Internal Server Error" });
+      return res.status(200).json(updateUser);
+    } catch (error: any) {
+      if (error.message === "User not found") {
+        res.status(404).json({ message: "User not found" });
+      }
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
+  }
+
+  async deleteUser(req: Request, res: Response) {
+    try {
+      const userId = parseInt(req.params.id, 10);
+      const deleteUser = await this.userService.getUserById(userId);
+      await this.userService.deleteUser(userId);
+      return res
+        .status(200)
+        .json({ message: "User deleted successfully", deleteUser });
+    } catch (error: any) {
+      if (error.message === "User not found") {
+        return res.status(404).json({ message: "User not found" });
+      }
+      return res.status(500).json({ message: "Internal Server Error" });
     }
   }
 }

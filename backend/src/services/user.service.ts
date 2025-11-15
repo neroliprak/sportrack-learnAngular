@@ -5,19 +5,27 @@ export class UserService {
   private userRepo = AppDataSource.getRepository(User);
 
   async getAllUsers() {
-    return await this.userRepo.find();
+    const users = await this.userRepo.find();
+    if (users.length === 0) {
+      throw new Error("No users found");
+    }
+    return users;
   }
 
   async getUserById(userId: number) {
-    return await this.userRepo.findOneBy({ id: userId });
-  }
-
-  async getUserByEmail(email: string) {
-    return await this.userRepo.find({ where: { email } });
+    const existingUser = await this.userRepo.findOneBy({ id: userId });
+    if (!existingUser) {
+      throw new Error("User not found");
+    }
+    return existingUser;
   }
 
   async createUser(user: User) {
-    return await this.userRepo.save(user);
+    const existingEmail = await this.userRepo.findOneBy({ email: user.email });
+    if (existingEmail) {
+      throw new Error("Email already exists");
+    }
+    return this.userRepo.save(user);
   }
 
   async updateUser(userId: number, dataUpdateUser: Partial<User>) {
@@ -25,7 +33,15 @@ export class UserService {
     if (!user) {
       throw new Error("User not found");
     }
-    return await this.userRepo.save({ id: userId, ...dataUpdateUser });
+    return this.userRepo.save({ id: userId, ...dataUpdateUser });
+  }
+
+  async deleteUser(userId: number) {
+    const user = await this.userRepo.findOneBy({ id: userId });
+    if (!user) {
+      throw new Error("User not found");
+    }
+    return this.userRepo.remove(user);
   }
 }
 

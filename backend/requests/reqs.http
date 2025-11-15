@@ -14,7 +14,7 @@ Content-type: application/json; charset=utf-8
 
 ###
 
-PUT http://localhost:5001/api/users/1
+PUT http://localhost:5001/api/users/4
 Content-type: application/json; charset=utf-8
 
 {

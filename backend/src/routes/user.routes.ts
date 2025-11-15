@@ -14,9 +14,9 @@ router.get("/:id", (req: Request, res: Response) => {
   userController.getUserById(req, res);
 });
 
-router.get("/email/:email", (req: Request, res: Response) => {
-  userController.getUserByEmail(req, res);
-});
+// router.get("/email/:email", (req: Request, res: Response) => {
+//   userController.getUserByEmail(req, res);
+// });
 
 router.post("/", (req: Request, res: Response) => {
   userController.createUser(req, res);
@@ -24,6 +24,10 @@ router.post("/", (req: Request, res: Response) => {
 
 router.put("/:id", (req: Request, res: Response) => {
   userController.updateUser(req, res);
+});
+
+router.delete("/:id", (req: Request, res: Response) => {
+  userController.deleteUser(req, res);
 });
 
 export default router;
