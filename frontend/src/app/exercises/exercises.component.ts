@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { IExercise } from "../iexercise";
-import { ExercicesService } from "./../exercices.service";
+import { ExercicesService } from "../exercices.service";
 
 @Component({
   selector: "app-exercises",

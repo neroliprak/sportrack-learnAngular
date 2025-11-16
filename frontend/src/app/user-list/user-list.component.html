@@ -1,5 +1,30 @@
-<h2>Liste des utilisateurs</h2>
+<app-navbar></app-navbar>
+<section>
+    <div class="title">
+        <h1>Admin Panel</h1>
+        <p>Total users {{users.length}}</p>
+    </div>
 
-@for (user of users; track user.id) {
-<p>{{ user.firstname }} </p>
-}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (user of users; track user.id) {
+            <tr>
+                <td>{{ user.firstname }} {{ user.lastname }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <div class="container-trash" (click)="onDeleteUser(user.id)">
+                        <div class="icon-trash"></div>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</section>
