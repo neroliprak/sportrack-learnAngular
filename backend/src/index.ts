@@ -2,10 +2,15 @@ import express from "express";
 import router from "./routes/user.routes";
 import { AppDataSource } from "./database/datasource";
 import { User } from "./entities/User";
+import cors from "cors";
 
 const app = express();
+
 // Middleware to parse JSON bodies
 app.use(express.json());
+// Enable CORS for all routes
+app.use(cors());
+
 const PORT = 5001;
 
 // Initialize database connection
