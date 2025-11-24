@@ -1,9 +1,12 @@
 section {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 90px;
+  padding: 90px; */
+
+  margin: 0 30px;
+  padding-top: 60px;
 }
 
 .title {
@@ -12,14 +15,19 @@ section {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  width: 80%;
-  border-bottom: 1px solid white;
+  /* border-bottom: 2px solid #333333; */
   padding-bottom: 20px;
+  padding: 0 40px;
+  height: 70px;
+}
+
+h1 {
+  font-size: 1.5rem;
 }
 
 table {
-  margin-top: 20px;
   width: 80%;
+  margin: 40px auto;
   border-collapse: collapse;
 }
 thead {
@@ -32,8 +40,9 @@ th {
 }
 
 td {
-  padding: 15px 20px;
+  padding: 10px 20px;
   transition: all 0.2s ease;
+  border-bottom: 1px solid #333333;
 }
 
 tr {
@@ -52,11 +61,6 @@ tbody tr:hover td {
 
 tbody tr:hover td:first-child {
   border-left: 3px solid var(--color-primary);
-}
-
-tbody tr td:last-child {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
 }
 
 .icon-trash {

@@ -35,7 +35,11 @@ export class CursorComponent implements AfterViewInit, OnDestroy, OnInit {
   @HostListener("document:mouseover", ["$event"])
   onMouseOver(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    if (target.tagName === "A" || target.tagName === "BUTTON") {
+    if (
+      target.tagName === "A" ||
+      target.tagName === "BUTTON" ||
+      target.classList.contains("mouse-pointer")
+    ) {
       gsap.to(this.cursor, {
         scale: 2.3,
         duration: 0.2,
@@ -46,7 +50,11 @@ export class CursorComponent implements AfterViewInit, OnDestroy, OnInit {
   @HostListener("document:mouseout", ["$event"])
   onMouseOut(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    if (target.tagName === "A" || target.tagName === "BUTTON") {
+    if (
+      target.tagName === "A" ||
+      target.tagName === "BUTTON" ||
+      target.classList.contains("mouse-pointer")
+    ) {
       gsap.to(this.cursor, { scale: 1, duration: 0.2 });
     }
   }

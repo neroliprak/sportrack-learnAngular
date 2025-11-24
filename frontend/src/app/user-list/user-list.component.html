@@ -1,15 +1,16 @@
 <app-navbar></app-navbar>
 <section>
-    <div class="title">
+    <!-- <div class="title">
         <h1>Admin Panel</h1>
+        <app-searchbar></app-searchbar>
         <p>Total users {{users.length}}</p>
-    </div>
+    </div> -->
 
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
+                <th (click)="sortBy('firstname')">Name</th>
+                <th (click)="sortBy('email')">Email</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -19,8 +20,8 @@
                 <td>{{ user.firstname }} {{ user.lastname }}</td>
                 <td>{{ user.email }}</td>
                 <td>
-                    <div class="container-trash" (click)="onDeleteUser(user.id)">
-                        <div class="icon-trash"></div>
+                    <div class="container-trash mouse-pointer" (click)="onDeleteUser(user.id)">
+                        <div class="icon-trash mouse-pointer"></div>
                     </div>
                 </td>
             </tr>

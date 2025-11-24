@@ -6,12 +6,11 @@
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 1px solid rgb(118, 118, 118);
+  /* backdrop-filter: blur(4px); */
 }
 
-.cursor::before,
+/* .cursor::before,
 .cursor::after {
   content: "";
   position: absolute;
@@ -26,4 +25,4 @@
 .cursor::after {
   width: 1px;
   height: 10px;
-}
+} */
